@@ -1,4 +1,4 @@
-# glowforge-camera
+# Raspberry Pi Zero based RTSP (streaming) camera
 
 This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera and streams the images using RTSP.
 
@@ -10,6 +10,9 @@ This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera 
 - Raspbian 10 Buster Lite
 - v4l2rtspserver
 - nginx
+
+## Background
+This configures your Raspberry Pi Zero wireless to act as a RSTP camera server, streaming your Pi camera over the network.  It configures your system from out of the box tohaving a network video stream.  I use this to monitor my laser cutter.  The camera and Pi are sitting on the transparent lid of my laser cutter facing down, which means I need to flip the horizontal and vertical image.  I have set the resoltion for be 640x480, but you are welcome to change that to whatever suits you best.  It installs nginx as a simple webserver to allow me to quickly see the stream configuration only.  v4l2rtspserver streams the video image from the Pi with minimal CPU overhead. I also use motion/motioneye/motioneyeos running on another server to process and store the streamed images.
 
 ## Installation
 1. Download Raspbian 10 Buster Lite image from [https://downloads.raspberrypi.org/raspbian_lite_latest](https://downloads.raspberrypi.org/raspbian_lite_latest)
@@ -89,3 +92,8 @@ This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera 
     ```
 1. Reboot via `shutdown -r now`
 1. Using VLC access the video stream by visiting `rtsp://192.168.10.129:8554/unicast`
+
+![assembled mask](images/rpi-zero-camera.jpg)
+
+## Credits
+- [https://kevinsaye.wordpress.com/2018/10/17/making-a-rtsp-server-out-of-a-raspberry-pi-in-15-minutes-or-less/](https://kevinsaye.wordpress.com/2018/10/17/making-a-rtsp-server-out-of-a-raspberry-pi-in-15-minutes-or-less/)
