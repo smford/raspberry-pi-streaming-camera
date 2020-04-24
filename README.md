@@ -89,5 +89,101 @@ This configures your Raspberry Pi Zero wireless to act as a RSTP camera server, 
 
 ![screen capture of vlc using rtsp](images/rpi-zero-camera.jpg)
 
+## Video Streaming Settings
+```
+root@glowcam:~# v4l2-ctl --all
+Driver Info:
+	Driver name      : bm2835 mmal
+	Card type        : mmal service 16.1
+	Bus info         : platform:bcm2835-v4l2
+	Driver version   : 4.19.97
+	Capabilities     : 0x85200005
+		Video Capture
+		Video Overlay
+		Read/Write
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x05200005
+		Video Capture
+		Video Overlay
+		Read/Write
+		Streaming
+		Extended Pix Format
+Priority: 2
+Video input : 0 (Camera 0: ok)
+Format Video Capture:
+	Width/Height      : 640/480
+	Pixel Format      : 'H264' (H.264)
+	Field             : None
+	Bytes per Line    : 0
+	Size Image        : 307200
+	Colorspace        : SMPTE 170M
+	Transfer Function : Default (maps to Rec. 709)
+	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+	Quantization      : Default (maps to Full Range)
+	Flags             :
+Format Video Overlay:
+	Left/Top    : 150/50
+	Width/Height: 1024/768
+	Field       : None
+	Chroma Key  : 0x00000000
+	Global Alpha: 0xff
+	Clip Count  : 0
+	Clip Bitmap : No
+Framebuffer Format:
+	Capability    : Extern Overlay
+			Global Alpha
+	Flags         : Overlay Matches Capture/Output Size
+	Width         : 640
+	Height        : 480
+	Pixel Format  : 'YU12'
+Streaming Parameters Video Capture:
+	Capabilities     : timeperframe
+	Frames per second: 25.000 (25/1)
+	Read buffers     : 1
+
+User Controls
+
+                     brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50 flags=slider
+                       contrast 0x00980901 (int)    : min=-100 max=100 step=1 default=0 value=0 flags=slider
+                     saturation 0x00980902 (int)    : min=-100 max=100 step=1 default=0 value=0 flags=slider
+                    red_balance 0x0098090e (int)    : min=1 max=7999 step=1 default=1000 value=1000 flags=slider
+                   blue_balance 0x0098090f (int)    : min=1 max=7999 step=1 default=1000 value=1000 flags=slider
+                horizontal_flip 0x00980914 (bool)   : default=0 value=1
+                  vertical_flip 0x00980915 (bool)   : default=0 value=1
+           power_line_frequency 0x00980918 (menu)   : min=0 max=3 default=1 value=1
+                      sharpness 0x0098091b (int)    : min=-100 max=100 step=1 default=0 value=0 flags=slider
+                  color_effects 0x0098091f (menu)   : min=0 max=15 default=0 value=0
+                         rotate 0x00980922 (int)    : min=0 max=360 step=90 default=0 value=0 flags=modify-layout
+             color_effects_cbcr 0x0098092a (int)    : min=0 max=65535 step=1 default=32896 value=32896
+
+Codec Controls
+
+             video_bitrate_mode 0x009909ce (menu)   : min=0 max=1 default=0 value=0 flags=update
+                  video_bitrate 0x009909cf (int)    : min=25000 max=25000000 step=25000 default=10000000 value=500000
+         repeat_sequence_header 0x009909e2 (bool)   : default=0 value=0
+            h264_i_frame_period 0x00990a66 (int)    : min=0 max=2147483647 step=1 default=60 value=30
+                     h264_level 0x00990a67 (menu)   : min=0 max=11 default=11 value=11
+                   h264_profile 0x00990a6b (menu)   : min=0 max=4 default=4 value=4
+
+Camera Controls
+
+                  auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0
+         exposure_time_absolute 0x009a0902 (int)    : min=1 max=10000 step=1 default=1000 value=1000
+     exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+             auto_exposure_bias 0x009a0913 (intmenu): min=0 max=24 default=12 value=12
+      white_balance_auto_preset 0x009a0914 (menu)   : min=0 max=10 default=1 value=1
+            image_stabilization 0x009a0916 (bool)   : default=0 value=0
+                iso_sensitivity 0x009a0917 (intmenu): min=0 max=4 default=0 value=0
+           iso_sensitivity_auto 0x009a0918 (menu)   : min=0 max=1 default=1 value=1
+         exposure_metering_mode 0x009a0919 (menu)   : min=0 max=2 default=0 value=0
+                     scene_mode 0x009a091a (menu)   : min=0 max=13 default=0 value=0
+
+JPEG Compression Controls
+
+            compression_quality 0x009d0903 (int)    : min=1 max=100 step=1 default=30 value=100
+```
+
 ## Credits
 - [https://kevinsaye.wordpress.com/2018/10/17/making-a-rtsp-server-out-of-a-raspberry-pi-in-15-minutes-or-less/](https://kevinsaye.wordpress.com/2018/10/17/making-a-rtsp-server-out-of-a-raspberry-pi-in-15-minutes-or-less/)
