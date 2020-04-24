@@ -185,5 +185,44 @@ JPEG Compression Controls
             compression_quality 0x009d0903 (int)    : min=1 max=100 step=1 default=30 value=100
 ```
 
+## v4l2-ctl --log-status
+```
+root@glowcam:~# v4l2-ctl --log-status
+
+Status Log:
+
+   [ 3227.744398] bcm2835-v4l2: =================  START STATUS  =================
+   [ 3227.744423] bcm2835-v4l2: Saturation: 0
+   [ 3227.744447] bcm2835-v4l2: Sharpness: 0
+   [ 3227.744459] bcm2835-v4l2: Contrast: 0
+   [ 3227.744472] bcm2835-v4l2: Brightness: 50
+   [ 3227.744485] bcm2835-v4l2: ISO Sensitivity: 0
+   [ 3227.744499] bcm2835-v4l2: ISO Sensitivity, Auto: Auto
+   [ 3227.744511] bcm2835-v4l2: Image Stabilization: false
+   [ 3227.744522] bcm2835-v4l2: Auto Exposure: Auto Mode
+   [ 3227.744533] bcm2835-v4l2: Exposure Time, Absolute: 1000
+   [ 3227.744546] bcm2835-v4l2: Auto Exposure, Bias: 0
+   [ 3227.744558] bcm2835-v4l2: Exposure, Dynamic Framerate: false
+   [ 3227.744569] bcm2835-v4l2: Exposure, Metering Mode: Average
+   [ 3227.744580] bcm2835-v4l2: White Balance, Auto & Preset: Auto
+   [ 3227.744590] bcm2835-v4l2: Red Balance: 1000
+   [ 3227.744602] bcm2835-v4l2: Blue Balance: 1000
+   [ 3227.744614] bcm2835-v4l2: Color Effects: None
+   [ 3227.744625] bcm2835-v4l2: Color Effects, CbCr: 32896
+   [ 3227.744638] bcm2835-v4l2: Rotate: 0
+   [ 3227.744649] bcm2835-v4l2: Horizontal Flip: true
+   [ 3227.744660] bcm2835-v4l2: Vertical Flip: true
+   [ 3227.744671] bcm2835-v4l2: Video Bitrate Mode: Variable Bitrate
+   [ 3227.744682] bcm2835-v4l2: Video Bitrate: 500000
+   [ 3227.744694] bcm2835-v4l2: Compression Quality: 100
+   [ 3227.744706] bcm2835-v4l2: Power Line Frequency: 50 Hz
+   [ 3227.744717] bcm2835-v4l2: Repeat Sequence Header: false
+   [ 3227.744727] bcm2835-v4l2: H264 Profile: High
+   [ 3227.744738] bcm2835-v4l2: H264 Level: 4
+   [ 3227.744748] bcm2835-v4l2: Scene Mode: None
+   [ 3227.744758] bcm2835-v4l2: H264 I-Frame Period: 30
+   [ 3227.744770] bcm2835-v4l2: ==================  END STATUS  ==================
+```
+
 ## Credits
 - [https://kevinsaye.wordpress.com/2018/10/17/making-a-rtsp-server-out-of-a-raspberry-pi-in-15-minutes-or-less/](https://kevinsaye.wordpress.com/2018/10/17/making-a-rtsp-server-out-of-a-raspberry-pi-in-15-minutes-or-less/)
