@@ -53,17 +53,10 @@ This configures your Raspberry Pi Zero wireless to act as a RSTP camera server, 
        <html>
        <head>
        <title>Glowforge Camera</title>
-       <style>
-       body {
-         width: 35em;
-         margin: 0 auto;
-         font-family: Tahoma, Verdana, Arial, sans-serif;
-       }
-       </style>
        </head>
        <body>
        <h1>Glowforge Camera</h1>
-       <p>IP: <a href="rtsp:/192.168.10.129:8554/unicast">rtsp://192.168.10.129:8554/unicast</a></p>
+       <p>IP: <a href="rtsp://192.168.10.129:8554/unicast">rtsp://192.168.10.129:8554/unicast</a></p>
        <p>Local: <a href="rtsp://glowcam:8554/unicast">rtsp://glowcam:8554/unicast</a></p>
        </body>
        </html>
@@ -86,9 +79,10 @@ This configures your Raspberry Pi Zero wireless to act as a RSTP camera server, 
 1. Configure RTSP streaming:
     `vim /etc/rc.local` then add the following lines to the bottom of the file BEFORE the `exit 0`
     ```
+    v4l2-ctl --set-ctrl video_bitrate=500000
+    v4l2-ctl --set-ctrl vertical_flip=1
+    v4l2-ctl --set-ctrl horizontal_flip=1
     v4l2rtspserver -W 640 -H 480 /dev/video0 &
-    v4l2-ctl  --set-ctrl vertical_flip=1
-    v4l2-ctl  --set-ctrl horizontal_flip=1
     ```
 1. Reboot via `shutdown -r now`
 1. Using VLC access the video stream by visiting `rtsp://192.168.10.129:8554/unicast`
