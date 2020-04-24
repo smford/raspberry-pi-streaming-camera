@@ -43,7 +43,7 @@ This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera 
     ```
 1. Configure nginx:
     1. `rm /var/www/html/index.nginx-debian.html`
-    1. `vim /var/www/html/index/html`
+    1. `vim /var/www/html/index.html`
        ```
        <!DOCTYPE html>
        <html>
@@ -80,5 +80,11 @@ This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera 
     And add:
     `disable_camera_led=1`
 1. Configure RTSP streaming:
-
-
+    `vim /etc/rc.local` then add the following lines to the bottom of the file BEFORE the `exit 0`
+    ```
+    v4l2rtspserver -W 640 -H 480 /dev/video0 &
+    v4l2-ctl  --set-ctrl vertical_flip=1
+    v4l2-ctl  --set-ctrl horizontal_flip=1
+    ```
+1. Reboot via `shutdown -r now`
+1. Using VLC access the video stream by visiting `rtsp://192.168.10.129:8554/unicast`
