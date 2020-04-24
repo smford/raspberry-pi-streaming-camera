@@ -35,6 +35,7 @@ This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera 
     passwd
     sudo su -
     apt-get update
+    apt-get upgrade
     apt-get install git cmake nginx vim screen -y
     mkdir ~/git
     cd ~/git
