@@ -26,7 +26,7 @@ This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera 
       psk="your-wifi-password"
     }
     ```
-1. Enable `touch /Volumes/BOOT/ssh`
+1. Enable SSH Daemon upon boot: `touch /Volumes/BOOT/ssh`
 1. Place SD card into Pi and power it on
 1. Discern your Pi's IP address
 1. SSH in: `ssh pi@192.168.10.129`
@@ -42,43 +42,43 @@ This is a simple webcam that uses a Raspberry Pi Zero wireless with a Pi Camera 
     cd v4l2rtspserver && cmake . && make && make install
     ```
 1. Configure nginx:
-  1. `rm /var/www/html/index.nginx-debian.html`
-  1. `vim /var/www/html/index/html`
-    ```
-    <!DOCTYPE html>
-    <html>
-    <head>
-    <title>Glowforge Camera</title>
-    <style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-    </style>
-    </head>
-    <body>
-    <h1>Glowforge Camera</h1>
-    <p>IP: <a href="rtsp:/192.168.10.129:8554/unicast">rtsp://192.168.10.129:8554/unicast</a></p>
-    <p>Local: <a href="rtsp://glowcam:8554/unicast">rtsp://glowcam:8554/unicast</a></p>
-    </body>
-    </html>
-    ```
+    1. `rm /var/www/html/index.nginx-debian.html`
+    1. `vim /var/www/html/index/html`
+       ```
+       <!DOCTYPE html>
+       <html>
+       <head>
+       <title>Glowforge Camera</title>
+       <style>
+       body {
+         width: 35em;
+         margin: 0 auto;
+         font-family: Tahoma, Verdana, Arial, sans-serif;
+       }
+       </style>
+       </head>
+       <body>
+       <h1>Glowforge Camera</h1>
+       <p>IP: <a href="rtsp:/192.168.10.129:8554/unicast">rtsp://192.168.10.129:8554/unicast</a></p>
+       <p>Local: <a href="rtsp://glowcam:8554/unicast">rtsp://glowcam:8554/unicast</a></p>
+       </body>
+       </html>
+       ```
 1. Change hostname:
-  `vim /etc/hostname`
-  and change to:
-  `glowcam`
+    `vim /etc/hostname`
+    and change to:
+    `glowcam`
 1. Enable camera:
-  `raspi-config`
-  "Update"
-  "Interfacing Options" -> "P1 Camera Enable/Disable connection to the Raspberry Pi Camera"
-  "Yes"
-  "OK"
-  "Finish"
+    `raspi-config`
+    "Update"
+    "Interfacing Options" -> "P1 Camera Enable/Disable connection to the Raspberry Pi Camera"
+    "Yes"
+    "OK"
+    "Finish"
 1. Disable camera LED:
-  `vim /boot/config.txt`
-  And add:
-  `disable_camera_led=1`
+    `vim /boot/config.txt`
+    And add:
+    `disable_camera_led=1`
 1. Configure RTSP streaming:
 
 
