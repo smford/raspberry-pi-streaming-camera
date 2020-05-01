@@ -80,6 +80,7 @@ This configures your Raspberry Pi Zero wireless to act as a RSTP camera server, 
     `vim /etc/rc.local` then add the following lines to the bottom of the file BEFORE the `exit 0`
     ```
     v4l2-ctl --set-ctrl video_bitrate=500000
+    v4l2-ctl -p 5
     v4l2-ctl --set-ctrl vertical_flip=1
     v4l2-ctl --set-ctrl horizontal_flip=1
     v4l2rtspserver -W 640 -H 480 /dev/video0 &
