@@ -141,7 +141,7 @@ Framebuffer Format:
 	Pixel Format  : 'YU12'
 Streaming Parameters Video Capture:
 	Capabilities     : timeperframe
-	Frames per second: 25.000 (25/1)
+	Frames per second: 5.000 (5000/1000)
 	Read buffers     : 1
 
 User Controls
@@ -164,7 +164,7 @@ Codec Controls
              video_bitrate_mode 0x009909ce (menu)   : min=0 max=1 default=0 value=0 flags=update
                   video_bitrate 0x009909cf (int)    : min=25000 max=25000000 step=25000 default=10000000 value=500000
          repeat_sequence_header 0x009909e2 (bool)   : default=0 value=0
-            h264_i_frame_period 0x00990a66 (int)    : min=0 max=2147483647 step=1 default=60 value=30
+            h264_i_frame_period 0x00990a66 (int)    : min=0 max=2147483647 step=1 default=60 value=60
                      h264_level 0x00990a67 (menu)   : min=0 max=11 default=11 value=11
                    h264_profile 0x00990a6b (menu)   : min=0 max=4 default=4 value=4
 
@@ -183,7 +183,7 @@ Camera Controls
 
 JPEG Compression Controls
 
-            compression_quality 0x009d0903 (int)    : min=1 max=100 step=1 default=30 value=100
+            compression_quality 0x009d0903 (int)    : min=1 max=100 step=1 default=30 value=30
 ```
 
 ## v4l2-ctl --log-status
@@ -192,37 +192,37 @@ root@glowcam:~# v4l2-ctl --log-status
 
 Status Log:
 
-   [ 3227.744398] bcm2835-v4l2: =================  START STATUS  =================
-   [ 3227.744423] bcm2835-v4l2: Saturation: 0
-   [ 3227.744447] bcm2835-v4l2: Sharpness: 0
-   [ 3227.744459] bcm2835-v4l2: Contrast: 0
-   [ 3227.744472] bcm2835-v4l2: Brightness: 50
-   [ 3227.744485] bcm2835-v4l2: ISO Sensitivity: 0
-   [ 3227.744499] bcm2835-v4l2: ISO Sensitivity, Auto: Auto
-   [ 3227.744511] bcm2835-v4l2: Image Stabilization: false
-   [ 3227.744522] bcm2835-v4l2: Auto Exposure: Auto Mode
-   [ 3227.744533] bcm2835-v4l2: Exposure Time, Absolute: 1000
-   [ 3227.744546] bcm2835-v4l2: Auto Exposure, Bias: 0
-   [ 3227.744558] bcm2835-v4l2: Exposure, Dynamic Framerate: false
-   [ 3227.744569] bcm2835-v4l2: Exposure, Metering Mode: Average
-   [ 3227.744580] bcm2835-v4l2: White Balance, Auto & Preset: Auto
-   [ 3227.744590] bcm2835-v4l2: Red Balance: 1000
-   [ 3227.744602] bcm2835-v4l2: Blue Balance: 1000
-   [ 3227.744614] bcm2835-v4l2: Color Effects: None
-   [ 3227.744625] bcm2835-v4l2: Color Effects, CbCr: 32896
-   [ 3227.744638] bcm2835-v4l2: Rotate: 0
-   [ 3227.744649] bcm2835-v4l2: Horizontal Flip: true
-   [ 3227.744660] bcm2835-v4l2: Vertical Flip: true
-   [ 3227.744671] bcm2835-v4l2: Video Bitrate Mode: Variable Bitrate
-   [ 3227.744682] bcm2835-v4l2: Video Bitrate: 500000
-   [ 3227.744694] bcm2835-v4l2: Compression Quality: 100
-   [ 3227.744706] bcm2835-v4l2: Power Line Frequency: 50 Hz
-   [ 3227.744717] bcm2835-v4l2: Repeat Sequence Header: false
-   [ 3227.744727] bcm2835-v4l2: H264 Profile: High
-   [ 3227.744738] bcm2835-v4l2: H264 Level: 4
-   [ 3227.744748] bcm2835-v4l2: Scene Mode: None
-   [ 3227.744758] bcm2835-v4l2: H264 I-Frame Period: 30
-   [ 3227.744770] bcm2835-v4l2: ==================  END STATUS  ==================
+   [58426.609192] bcm2835-v4l2: =================  START STATUS  =================
+   [58426.609215] bcm2835-v4l2: Saturation: 0
+   [58426.609237] bcm2835-v4l2: Sharpness: 0
+   [58426.609250] bcm2835-v4l2: Contrast: 0
+   [58426.609261] bcm2835-v4l2: Brightness: 50
+   [58426.609274] bcm2835-v4l2: ISO Sensitivity: 0
+   [58426.609289] bcm2835-v4l2: ISO Sensitivity, Auto: Auto
+   [58426.609301] bcm2835-v4l2: Image Stabilization: false
+   [58426.609313] bcm2835-v4l2: Auto Exposure: Auto Mode
+   [58426.609324] bcm2835-v4l2: Exposure Time, Absolute: 1000
+   [58426.609337] bcm2835-v4l2: Auto Exposure, Bias: 0
+   [58426.609349] bcm2835-v4l2: Exposure, Dynamic Framerate: false
+   [58426.609360] bcm2835-v4l2: Exposure, Metering Mode: Average
+   [58426.609371] bcm2835-v4l2: White Balance, Auto & Preset: Auto
+   [58426.609381] bcm2835-v4l2: Red Balance: 1000
+   [58426.609392] bcm2835-v4l2: Blue Balance: 1000
+   [58426.609404] bcm2835-v4l2: Color Effects: None
+   [58426.609415] bcm2835-v4l2: Color Effects, CbCr: 32896
+   [58426.609428] bcm2835-v4l2: Rotate: 0
+   [58426.609440] bcm2835-v4l2: Horizontal Flip: true
+   [58426.609450] bcm2835-v4l2: Vertical Flip: true
+   [58426.609461] bcm2835-v4l2: Video Bitrate Mode: Variable Bitrate
+   [58426.609472] bcm2835-v4l2: Video Bitrate: 500000
+   [58426.609484] bcm2835-v4l2: Compression Quality: 30
+   [58426.609497] bcm2835-v4l2: Power Line Frequency: 50 Hz
+   [58426.609508] bcm2835-v4l2: Repeat Sequence Header: false
+   [58426.609518] bcm2835-v4l2: H264 Profile: High
+   [58426.609529] bcm2835-v4l2: H264 Level: 4
+   [58426.609539] bcm2835-v4l2: Scene Mode: None
+   [58426.609550] bcm2835-v4l2: H264 I-Frame Period: 60
+   [58426.609563] bcm2835-v4l2: ==================  END STATUS  ==================
 ```
 
 ## Credits
