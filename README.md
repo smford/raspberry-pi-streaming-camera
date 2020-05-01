@@ -90,6 +90,37 @@ This configures your Raspberry Pi Zero wireless to act as a RSTP camera server, 
 
 ![screen capture of vlc using rtsp](images/rpi-zero-camera.jpg)
 
+## How to change video streaming settings
+In this example setup I have configured it with the following settings:
+- a reduced resolution of 640x480, rather than the default of 2592x1944
+- a reduced frames per second of 5, rather than 25
+- a reduced bitrate of 500000, rather than the default of 1000000
+- vertical flip of image
+- horizontal flip of image
+
+You can customise these to anything that works best for you.  These settings reduced the bandwidth requirements for me, but in theory you can set it to be 2592x1944 @25fps or even 1080p @30fps, 720p @60fps, or 480p @90fps.
+
+To change the settings, just edit the /etc/rc.local, change these lines and reboot:
+```
+# Set bitrate to 500000
+v4l2-ctl --set-ctrl video_bitrate=500000
+
+# Set frames per second to 5
+v4l2-ctl -p 5
+
+# Vertically flip the image
+v4l2-ctl --set-ctrl vertical_flip=1
+
+# Horizontally flip the image
+v4l2-ctl --set-ctrl horizontal_flip=1
+
+# Set streaming resolution at 640x480
+v4l2rtspserver -W 640 -H 480 /dev/video0 &
+```
+
+You can change these settings whilst streaming too.
+
+
 ## Video Streaming Settings
 ```
 root@glowcam:~# v4l2-ctl --all
