@@ -32,7 +32,7 @@ This configures your Raspberry Pi Zero wireless to act as a RSTP camera server, 
 1. Enable SSH Daemon upon boot: `touch /Volumes/BOOT/ssh`
 1. Place SD card into Pi and power it on
 1. Discern your Pi's IP address
-1. SSH in: `ssh pi@192.168.10.129`
+1. SSH in: `ssh pi@192.168.10.129` password: `raspberry`
 1. Run the following commands:
     ```
     passwd
